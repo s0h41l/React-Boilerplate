@@ -41,15 +41,7 @@ class Register extends Component {
 
     const response =  await fetch(url,{
       method:'POST',
-      headers:{
-        "Access-Control-Allow-Origin":"*"
-      },
-      body:{
-        name:'sohail',
-        email:'sohail@kmail.conm',
-        password:'dsfhdjksfhdjdfshjsdfhjkhsfd'
-
-      }
+      body:JSON.stringify(user)
     })
     console.log(response);
   }
