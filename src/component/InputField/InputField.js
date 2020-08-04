@@ -10,8 +10,14 @@ class InputField extends Component {
     return (
       <div className="form-group">
         <label>{this.props.label}</label>
-        <input type={this.props.secure?'password':'text'}
-         onChange={text=>this.props.onChangeText(text.target.value)} className="form-control" placeholder={this.props.placeholder} value={this.props.value}/>
+        <input 
+          type={this.props.secure?'password':'text'}
+          onChange={text=>this.props.onChangeText(text.target.value)} 
+          className="form-control" 
+          placeholder={this.props.placeholder} 
+          value={this.props.value}
+          style={this.props.style}
+          />
       </div>
     );
   }

@@ -8,7 +8,9 @@ class Login extends Component {
   // }
 
   // componentWillMount(){}
-  // componentDidMount(){}
+  componentDidMount(){
+    console.log(process.env.REACT_APP_BASE_API_URL);
+  }
   // componentWillUnmount(){}
 
   // componentWillReceiveProps(){}
