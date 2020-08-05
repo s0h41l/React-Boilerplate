@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './Register.css';
 import InputField from '../../component/InputField';
 import Button from '../../component/Button';
+import {registerUser} from '../../services/auth.api';
 
 class Register extends Component {
   constructor(props){
@@ -9,7 +10,9 @@ class Register extends Component {
     this.state = {
       name:'',
       email:'',
-      password:''
+      password:'',
+      error:'',
+      success:''
     };
   }
 
@@ -32,18 +35,29 @@ class Register extends Component {
   }
 
   async register(){
-    const url = process.env.REACT_APP_BASE_API_URL+'/user/register';
-    const user = {
-      name:this.state.name,
-      email:this.state.email,
-      password:this.state.password
+    const name = this.state.name;
+    const email = this.state.email;
+    const password = this.state.password;
+    const response = await registerUser(name, email, password);
+    console.log(response);
+    if(response.status == 200){
+      this.setState({
+        success: response.data.message,
+        email:'',
+        name:'',
+        password:''
+      })
+    }else if(response.status == 409){
+      this.setState({
+        error: response.data.message,
+        name:'',
+      })
+    }else {
+      this.setState({
+        error: response.data.message
+      })
     }
 
-    const response =  await fetch(url,{
-      method:'POST',
-      body:JSON.stringify(user)
-    })
-    console.log(response);
   }
 
   render() {
@@ -70,6 +84,10 @@ class Register extends Component {
               value={this.state.password} 
               label="Password" 
               secure={true}/>
+
+            {this.state.success &&  <div className="alert alert-success" role="alert">{this.state.success}</div>}
+            {this.state.error &&  <div className="alert alert-danger" role="alert">{this.state.error}</div>}
+
             <div>
               <Button 
                 onClick={this.register.bind(this)}
