@@ -35,26 +35,27 @@ class Register extends Component {
   }
 
   async register(){
+
     const name = this.state.name;
     const email = this.state.email;
     const password = this.state.password;
     const response = await registerUser(name, email, password);
-    console.log(response);
+    
     if(response.status == 200){
       this.setState({
         success: response.data.message,
         email:'',
         name:'',
-        password:''
+        password:'',
+        error:''
       })
-    }else if(response.status == 409){
+    }else{
       this.setState({
-        error: response.data.message,
+        error:'Something went wrong',
+        email:'',
         name:'',
-      })
-    }else {
-      this.setState({
-        error: response.data.message
+        password:'',
+        success:''
       })
     }
 

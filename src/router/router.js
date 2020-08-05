@@ -3,13 +3,14 @@ import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
 
 import Login from '../pages/Login';
 import Register from '../pages/Register';
+import Home from '../pages/Home';
 
 
 export default function App() {
   return (
     <Switch>
         <Route path="/home">
-            <Register/>
+            <Home/>
         </Route>
         
         <Route path="/register">
@@ -21,7 +22,7 @@ export default function App() {
         </Route>
 
         <Route path="/">
-            <Register/>
+            <Home/>
         </Route>        
 
     </Switch>
