@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Chat from '../Chat';
 import './Home.css';
 
 class Home extends Component {
@@ -18,8 +19,8 @@ class Home extends Component {
 
   render() {
     return (
-      <div className="pt-5">
-        <h1 className="display-2 text-center">Home Page</h1>
+      <div className="pt-3">
+        <Chat/>
       </div>
     );
   }

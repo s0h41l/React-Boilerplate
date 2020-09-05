@@ -1,0 +1,24 @@
+.bg-header {
+    background-color: #9818d6;
+    color:#ffff;
+}
+
+.chat-box {
+    height: 80vh;
+}
+
+.send {
+    color: #4a47a3;
+    font-size: 25px;
+    margin-top: 7px;
+}
+
+.send:focus {
+    color: #4a47a3;
+    opacity: 0.9;
+}
+
+.send:hover {
+    color: #4a47a3;
+    opacity: 0.9;
+}
